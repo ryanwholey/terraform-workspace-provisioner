@@ -4,10 +4,6 @@ inputs:
   terraform-version:
     description: Terraform version
     default: '0.15.5'
-defaults:
-  run:
-    shell: bash
-    working-directory: scripts
 runs:
   using: composite
   steps:
@@ -16,4 +12,10 @@ runs:
         unzip terraform.zip
         chmod +x terraform
         sudo mv terraform /usr/local/bin/setup-terraform.sh
+      shell: bash
     - run: terraform version
+      shell: bash
+    - run: ${{ github.action_path }}/bin/provision-workspace.sh
+      shell: bash
+      env:
+        TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
