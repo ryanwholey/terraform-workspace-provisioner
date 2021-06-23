@@ -1,4 +1,9 @@
-variable "environments" {}
+variable "environments" {
+  default = []
+}
+variable "auto_apply" {
+  default = false
+}
 
 data "terraform_remote_state" "secrets" {
   backend = "remote"
@@ -17,4 +22,5 @@ module "project" {
   name         = var.workspace_name
   organization = var.terraform_organization
   environments = var.environments
+  auto_apply   = var.auto_apply
 }
