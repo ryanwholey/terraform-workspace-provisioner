@@ -23,7 +23,7 @@ runs:
     - name: Login to Terraform Enterprise
       run: |
         cat \<<EOF > /tmp/cli-config.tfrc
-          credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token" }
+          credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token }}" }
         EOF
     - name: Provision workspace
       run: ${{ github.action_path }}/bin/provision-workspace.sh
