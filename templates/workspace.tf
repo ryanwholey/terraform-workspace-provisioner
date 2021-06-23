@@ -1,6 +1,7 @@
 variable "environments" {
   default = []
 }
+
 variable "auto_apply" {
   default = false
 }

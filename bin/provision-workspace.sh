@@ -12,6 +12,8 @@ cp $PROJECT_VARS .
 cp $TEMPLATE_DIR/basic-vars.tf .
 cp $TEMPLATE_DIR/backend.tf .
 
+cat $PROJECT_VARS
+
 terraform init
 terraform apply -auto-approve
 
