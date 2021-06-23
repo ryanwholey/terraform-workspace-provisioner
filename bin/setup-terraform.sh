@@ -4,4 +4,4 @@ curl -o terraform.zip https://releases.hashicorp.com/terraform/0.15.5/terraform_
 unzip terraform.zip
 chmod +x terraform
 sudo mv terraform /usr/local/bin/
-tf version
+terraform version
