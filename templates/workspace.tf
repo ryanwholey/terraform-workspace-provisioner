@@ -1,3 +1,5 @@
+variable "environments" {}
+
 data "terraform_remote_state" "secrets" {
   backend = "remote"
   config = {
