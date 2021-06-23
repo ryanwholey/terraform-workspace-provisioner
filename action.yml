@@ -4,6 +4,9 @@ inputs:
   terraform-version:
     description: Terraform version
     default: '0.15.5'
+  tfe-token:
+    description: Terraform version
+    required: true
 runs:
   using: composite
   steps:
@@ -17,5 +20,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
-      env:
-        TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+      # env:
+      #   TFE_TOKEN: ${{ inputs.tfe-token }}
