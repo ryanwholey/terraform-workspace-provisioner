@@ -49,6 +49,7 @@ runs:
           }
         EOF
         echo "::set-output name=default-vars::$tf_default_vars"
+      shell: bash
     - name: Provision workspace
       run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
