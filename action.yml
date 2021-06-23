@@ -13,3 +13,4 @@ runs:
         chmod +x terraform
         sudo mv terraform /usr/local/bin/setup-terraform.sh
       shell: bash
+    - run: terraform version
