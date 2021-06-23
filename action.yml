@@ -21,13 +21,16 @@ runs:
         sudo mv terraform /usr/local/bin/terraform
       shell: bash
     - name: Login to Terraform Enterprise
+      id: tf-login
       run: |
-        cat <<EOF > /tmp/cli-config.tfrc
+        tf_cli_config=/tmp/cli-config.tfrc
+        cat <<EOF > $tf_cli_config
           credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token }}" }
         EOF
+        echo "::set-output name=tf-cli-config::$tf_cli_config
       shell: bash
     - name: Provision workspace
       run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
       env:
-        TF_CLI_CONFIG_FILE: /tmp/cli-config.tfrc
+        TF_CLI_CONFIG_FILE: ${{ steps.tf-login.outputs.tf-cli-config }}
