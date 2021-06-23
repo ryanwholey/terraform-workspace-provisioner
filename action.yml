@@ -4,10 +4,12 @@ inputs:
   terraform-version:
     description: Terraform version
     default: '0.15.5'
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
 runs:
   using: composite
-  defaults:
-    shell: bash
   steps:
     - run: |
         curl -o terraform.zip https://releases.hashicorp.com/terraform/${{inputs.terraform-version}}/terraform_${{inputs.terraform-version}}_linux_amd64.zip 
