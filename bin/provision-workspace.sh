@@ -8,16 +8,12 @@ cd terraform-workspace
 
 cp $DEFAULT_VARS .
 cp $PROJECT_VARS .
+cp $TEMPLATE_DIR/basic-vars.tf .
 cp $TEMPLATE_DIR/backend.tf .
 
-ls
-cat $PROJECT_VARS
-
 terraform init
-terraform plan
+terraform apply -auto-approve
 
-
-# ls 
-
-# terraform init
-# terraform plan
+cp $TEMPLATE_DIR/workspace.tf .
+terraform init
+terrafor plan
