@@ -27,7 +27,7 @@ runs:
         cat <<EOF > $tf_cli_config
           credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token }}" }
         EOF
-        echo "::set-output name=tf-cli-config::$tf_cli_config
+        echo "::set-output name=tf-cli-config::$tf_cli_config"
       shell: bash
     - name: Provision workspace
       run: ${{ github.action_path }}/bin/provision-workspace.sh
