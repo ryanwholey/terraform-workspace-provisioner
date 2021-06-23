@@ -20,5 +20,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
-      # env:
-      #   TFE_TOKEN: ${{ inputs.tfe-token }}
+      env:
+        TFE_TOKEN: ${{ inputs.tfe-token }}
