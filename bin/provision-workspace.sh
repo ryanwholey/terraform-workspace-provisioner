@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 terraform version
 
 mkdir -p terraform-workspace
@@ -13,11 +15,12 @@ cp $TEMPLATE_DIR/backend.tf .
 
 terraform init
 terraform apply -auto-approve
-rm -rf .terraform
-rm -rf .terraform.tfstate
-rm -rf .terraform.tfstate.backup
+
+ls -a
+
 
 cp $TEMPLATE_DIR/workspace.tf .
-ls -a
+
+
 terraform init
 terraform plan
