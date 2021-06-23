@@ -13,7 +13,8 @@ cp $TEMPLATE_DIR/backend.tf .
 
 terraform init
 terraform apply -auto-approve
+rm -rf .terraform
 
 cp $TEMPLATE_DIR/workspace.tf .
 terraform init
-terrafor plan
+terraform plan
