@@ -4,21 +4,29 @@ inputs:
   terraform-version:
     description: Terraform version
     default: '0.15.5'
-  tfe-token:
+  terraform-token:
     description: Terraform version
     required: true
+  terraform-host:
+    description: Terraform host
+    default: app.terraform.io
 runs:
   using: composite
   steps:
-    - run: |
+    - name: Setup Terraform
+      run: |
         curl -o terraform.zip https://releases.hashicorp.com/terraform/${{inputs.terraform-version}}/terraform_${{inputs.terraform-version}}_linux_amd64.zip 
         unzip terraform.zip
         chmod +x terraform
         sudo mv terraform /usr/local/bin/setup-terraform.sh
       shell: bash
-    - run: terraform version
-      shell: bash
-    - run: ${{ github.action_path }}/bin/provision-workspace.sh
+    - name: Login to Terraform Enterprise
+      run: |
+        cat \<<EOF > /tmp/cli-config.tfrc
+          credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token" }
+        EOF
+    - name: Provision workspace
+      run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
       env:
-        TFE_TOKEN: ${{ inputs.tfe-token }}
+        TF_CLI_CONFIG_FILE: /tmp/cli-config.tfrc
