@@ -51,6 +51,7 @@ runs:
       shell: bash
       env:
         TF_CLI_CONFIG_FILE: ${{ steps.tf-login.outputs.tf-cli-config }}
+        TFE_TOKEN: ${{ inputs.terraform-token }}
         DEFAULT_VARS: ${{ steps.default-vars.outputs.default-vars }}
         PROJECT_VARS: ${{ inputs.project-vars-file }}
         TEMPLATE_DIR: ${{ github.action_path }}/templates
