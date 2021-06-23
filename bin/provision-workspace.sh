@@ -28,7 +28,5 @@ cp ../create-backend/backend.tf .
 
 ls -a
 
-cat $TF_CLI_CONFIG_FILE
-
 terraform init
-terraform plan
+terraform apply -auto-approve
