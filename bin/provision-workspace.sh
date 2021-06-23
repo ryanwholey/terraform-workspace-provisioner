@@ -1,3 +1,4 @@
 #!/bin/sh
 
-terraform version
+# terraform version
+echo hello world
