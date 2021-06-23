@@ -42,7 +42,7 @@ runs:
         tf_default_vars=/tmp/default.auto.tfvars
         cat <<EOF > $tf_default_vars
           terraform_organization = "${{ inputs.terraform-organization }}"
-          secrets_workspace  = "${{ inputs.secrets-workspace }}"
+          secrets_workspace      = "${{ inputs.secrets-workspace }}"
         EOF
         echo "::set-output name=default-vars::$tf_default_vars"
       shell: bash

@@ -26,7 +26,5 @@ cp $TEMPLATE_DIR/basic-vars.tf .
 cp $TEMPLATE_DIR/workspace.tf .
 cp ../create-backend/backend.tf .
 
-ls -a
-
 terraform init
 terraform apply -auto-approve
