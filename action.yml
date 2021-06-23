@@ -14,3 +14,4 @@ runs:
         sudo mv terraform /usr/local/bin/setup-terraform.sh
       shell: bash
     - run: terraform version
+      shell: bash
