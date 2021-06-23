@@ -20,22 +20,6 @@ inputs:
 runs:
   using: composite
   steps:
-    # - name: Setup Terraform
-    #   run: |
-    #     curl -o terraform.zip https://releases.hashicorp.com/terraform/${{inputs.terraform-version}}/terraform_${{inputs.terraform-version}}_linux_amd64.zip 
-    #     unzip terraform.zip
-    #     chmod +x terraform
-    #     sudo mv terraform /usr/local/bin/terraform
-    #   shell: bash
-    # - name: Login to Terraform Enterprise
-    #   id: tf-login
-    #   run: |
-    #     tf_cli_config=/tmp/cli-config.tfrc
-    #     cat <<EOF > $tf_cli_config
-    #       credentials "${{ inputs.terraform-host }}" { token = "${{ inputs.terraform-token }}" }
-    #     EOF
-    #     echo "::set-output name=tf-cli-config::$tf_cli_config"
-    #   shell: bash
     - name: Default Terraform variables
       id: default-vars
       run: |
@@ -50,7 +34,6 @@ runs:
       run: ${{ github.action_path }}/bin/provision-workspace.sh
       shell: bash
       env:
-        TF_CLI_CONFIG_FILE: ${{ steps.tf-login.outputs.tf-cli-config }}
         TFE_TOKEN: ${{ inputs.terraform-token }}
         DEFAULT_VARS: ${{ steps.default-vars.outputs.default-vars }}
         PROJECT_VARS: ${{ inputs.project-vars-file }}
