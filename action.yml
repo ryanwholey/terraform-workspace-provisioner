@@ -14,8 +14,6 @@ inputs:
     description: Terraform organization
   secrets-workspace:
     description: Terraform workspace
-  secrets-key:
-    description: Secrets output key
   project-vars-file:
     description: Terraform vars file for the project
     default: project.auto.tfvars
@@ -48,9 +46,6 @@ runs:
           }
           variable "secrets_workspace" {
             value = "${{ inputs.secrets-workspace }}"
-          }
-          variable "secrets_key" {
-            value = "${{ inputs.secrets-key }}"
           }
         EOF
         echo "::set-output name=default-vars::$tf_default_vars"
