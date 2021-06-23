@@ -6,12 +6,12 @@ inputs:
     default: '0.15.5'
 runs:
   using: composite
+  defaults:
+    shell: bash
   steps:
     - run: |
         curl -o terraform.zip https://releases.hashicorp.com/terraform/${{inputs.terraform-version}}/terraform_${{inputs.terraform-version}}_linux_amd64.zip 
         unzip terraform.zip
         chmod +x terraform
         sudo mv terraform /usr/local/bin/setup-terraform.sh
-      shell: bash
     - run: terraform version
-      shell: bash
