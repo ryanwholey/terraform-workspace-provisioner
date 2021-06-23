@@ -18,5 +18,5 @@ rm -rf .terraform.tfstate
 rm -rf .terraform.tfstate.backup
 
 cp $TEMPLATE_DIR/workspace.tf .
-terraform init
+terraform init -migrate-state
 terraform plan
